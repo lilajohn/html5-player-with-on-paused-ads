@@ -1,51 +1,49 @@
-<script>
-  videojs("video123").ready(function() {
-    var deviceWidth = window.innerWidth;
-    var deviceHeight = window.innerHeight;
-    var iframeWidth;
-    var iframeHeight;
-    var iframeSrc;
+<style>
+  .parent {
+    position: relative;
+  }
+  
+  .child {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: yellow;
+  }
+  
+  .close-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 5px;
+    cursor: pointer;
+    background-color: yellow;
+  }
+  
+  .video-js button{
+  outline: none;
+}
 
-    if (deviceWidth >= 600) {
-      // Desktop
-      iframeWidth = "300";
-      iframeHeight = "262";
-      iframeSrc = "https://www.fastingsex.com/pc-ads";
-    } else {
-      // Mobile
-      iframeWidth = "300";
-      iframeHeight = "115";
-      iframeSrc = "https://www.fastingsex.com/copy-of-pc-ads";
-    }
+.video-js .vjs-big-play-button{ 
+  color: RGB(255, 204, 25);
 
-    var div1 = document.createElement('div');
-    div1.innerHTML = '<iframe src=\"' + iframeSrc + '\" width=\"' + iframeWidth + '\" height=\"' + iframeHeight + '\" scrolling=\"no\" frameborder=\"0\"></iframe></iframe><button class="close-button">Close Ads</button>';
-    div1.className = "child";
-
-    var closeButton = div1.querySelector(".close-button");
-    closeButton.addEventListener("click", function() {
-      document.getElementById("div112").removeChild(div1);
-    });
-
-    this.on("pause", function() {
-      // Exit fullscreen mode
-      if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) {
-          document.webkitExitFullscreen();
-        } else if (document.mozCancelFullScreen) {
-          document.mozCancelFullScreen();
-        } else if (document.msExitFullscreen) {
-          document.msExitFullscreen();
-        }
-      }
-
-      document.getElementById("div112").appendChild(div1);
-    });
-
-    this.on("play", function() {
-      document.getElementById("div112").removeChild(div1);
-    });
-  });
-</script>
+}
+.vjs-loading-spinner { 
+  font-size: 2.5em;
+  width: 2em;
+  height: 2em;
+  border-radius: 1em;
+  margin-top: -1em;
+  margin-left: -1.5em;
+}
+.video-js .vjs-control-bar{ 
+  display: flex;
+}
+.video-js .vjs-play-progress{
+  color: #ffb845;
+  background-color: #FFCC19;
+}
+</style>
